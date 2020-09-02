@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -116,9 +117,25 @@ public class ClienteController extends HttpServlet {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sf = new SimpleDateFormat();
 		c.setTime(sf.parse(request.getParameter("txtDtNasc")));
-		
+		cli.setDataNasc(c.getTime());
 		//************************FORMATANDO A DATA*************
-	
+		cli.setGenero(request.getParameter("txtGen").charAt(0));
+		cli.setTelefone(Long.parseLong(request.getParameter("txtTel")));
+		
+		//Adicionando na lista
+		lista.add(cli);
+		
+		//Adicionando a lista em um atributo no request.
+		request.setAttribute("listaCliente", lista);
+		
+		//*************CRIANDO O ENCAMINHAMENTO*****************//
+		//Criando o dispatcher
+		RequestDispatcher rd = request.getRequestDispatcher("lista.jsp");
+		
+		//Realizando o encaminhamento do request e response para a URI/URL
+		rd.forward(request, response);
+		
+		//*************CRIANDO O ENCAMINHAMENTO*****************//
 		
 		}catch (ParseException e) {
 			e.printStackTrace();
