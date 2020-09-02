@@ -16,6 +16,7 @@
 	</header>
 	<div></div>
 	<section>
+	
 		<table>
 			<tr>
 				<th>ID</th>
@@ -25,6 +26,7 @@
 				<th>Tel</th>
 			</tr>
 		</table>
+		
 	</section>
 	<footer></footer>
 

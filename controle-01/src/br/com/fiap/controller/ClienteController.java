@@ -47,7 +47,7 @@ public class ClienteController extends HttpServlet {
         	Calendar c = Calendar.getInstance();
         	SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
         	try {
-				c.setTime(sf.parse("27/Dez/1975"));
+				c.setTime(sf.parse("27/12/1975"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -66,7 +66,7 @@ public class ClienteController extends HttpServlet {
         	c = Calendar.getInstance();
         	sf = new SimpleDateFormat("dd/MM/yyyy");
         	try {
-				c.setTime(sf.parse("12/Jan/1974"));
+				c.setTime(sf.parse("12/01/1974"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -85,7 +85,7 @@ public class ClienteController extends HttpServlet {
         	c = Calendar.getInstance();
         	sf = new SimpleDateFormat("dd/MM/yyyy");
         	try {
-				c.setTime(sf.parse("23/Mar/1982"));
+				c.setTime(sf.parse("23/03/1982"));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -115,7 +115,7 @@ public class ClienteController extends HttpServlet {
 		cli.setSobrenonme(request.getParameter("txtSnm"));
 		//************************FORMATANDO A DATA*************
 		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sf = new SimpleDateFormat();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		c.setTime(sf.parse(request.getParameter("txtDtNasc")));
 		cli.setDataNasc(c.getTime());
 		//************************FORMATANDO A DATA*************
@@ -139,6 +139,7 @@ public class ClienteController extends HttpServlet {
 		
 		}catch (ParseException e) {
 			e.printStackTrace();
+			response.sendRedirect("excecao.jsp");
 		}
 	}
 
