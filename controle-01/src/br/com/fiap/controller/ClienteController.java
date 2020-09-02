@@ -103,10 +103,43 @@ public class ClienteController extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		try {
+		//Recebendo os dados do cliente via request e adicionando em um Bean.
+		//Criar a estância da classe Cliente para receber os dados.
+		Cliente cli = null;
+		//Cria o objeto e adiciona os dados.
+		cli = new Cliente();
+		cli.setNome(request.getParameter("txtNm"));
+		cli.setSobrenonme(request.getParameter("txtSnm"));
+		//************************FORMATANDO A DATA*************
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat sf = new SimpleDateFormat();
+		c.setTime(sf.parse(request.getParameter("txtDtNasc")));
+		
+		//************************FORMATANDO A DATA*************
+	
+		
+		}catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
