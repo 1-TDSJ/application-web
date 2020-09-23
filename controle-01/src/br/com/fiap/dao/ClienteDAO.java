@@ -18,7 +18,16 @@ public class ClienteDAO {
 	
 	public ClienteDAO() {
 		ConnectionFactory cf = new ConnectionFactory();
-		this.con = cf.getConnection();
+		try {
+			this.con = cf.DBConnectionManager();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public List<Cliente> select(){
@@ -123,25 +132,28 @@ public class ClienteDAO {
 	
 	public boolean insert(Cliente cli) {
 		
-		//CRIADO A INSTRUÇÃO SQL
-		String sql = "INSERT INTO TBL_CLIENTE VALUES(SEQ_CLIENTE_A.NEXTAL,?,?,?,?,?);";
 		
 		try {
-			
+		//CRIADO A INSTRUÇÃO SQL
+		String sql = "INSERT INTO TBL_CLIENTE VALUES(SEQ_CLIENTE_A.NEXTVAL,?,?,TO_DATE(?,'YYYY-MM-DD'),?,?)";
+					
 			//Criando o estado da conexão
 			PreparedStatement ps = con.prepareStatement(sql);
 			
 			//Passar o parâmetro para Statement.
-			ps.setString(2, cli.getNome());
-			ps.setString(3, cli.getSobrenonme());
+			ps.setString(1, cli.getNome());
+			ps.setString(2, cli.getSobrenonme());
 			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-			ps.setString(4, sf.format(cli.getDataNasc()));
-			ps.setString(5, String.valueOf(cli.getGenero()));
-			ps.setLong(6, cli.getTelefone());
+			ps.setString(3, sf.format(cli.getDataNasc()));
+			ps.setString(4, String.valueOf(cli.getGenero()));
+			ps.setLong(5, cli.getTelefone());
 			
+			boolean status = false;
 			//Executando o Statement
-			boolean status = ps.execute();
-				
+			if(ps.executeUpdate() == 1) {
+				status = true;
+			}
+			
 			ps.close();
 			con.close();
 			
@@ -152,7 +164,17 @@ public class ClienteDAO {
 		} 
 		
 		return false;
-
 	}
+	
+	public boolean update(Cliente cli) {
+		
+		return true;
+	}
+	
+	public boolean delete(int idCli) {
+		
+		return true;
+	}
+
 }
 

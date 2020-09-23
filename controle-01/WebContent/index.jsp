@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,11 @@
 	<header>
 		<nav></nav>
 	</header>
-	<div></div>
+	
+	<div>
+		<h2>${param.msgStatus}</h2> 		
+	</div>
+	
 	<section>
 		<form action="cliente" method="post">
 			<fieldset>

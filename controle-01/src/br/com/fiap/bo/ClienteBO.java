@@ -20,15 +20,18 @@ public class ClienteBO {
 	}
 	
 	public boolean gravarCliente(Cliente cli) {
-		return false;
+		cd = new ClienteDAO();
+		return cd.insert(cli);
 	}
 
 	public boolean atualizarCliente(Cliente cli) {
-		return false;
+		cd = new ClienteDAO();
+		return cd.update(cli);
 	}
 	
 	public boolean excluirCliente(int idCli) {
-		return false;
+		cd = new ClienteDAO();
+		return cd.delete(idCli);
 	}
 
 }
