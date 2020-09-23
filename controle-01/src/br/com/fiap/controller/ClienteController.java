@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.fiap.bean.Cliente;
+import br.com.fiap.bo.ClienteBO;
 
 /**
  * Servlet implementation class ClienteController
@@ -123,7 +124,11 @@ public class ClienteController extends HttpServlet {
 		cli.setTelefone(Long.parseLong(request.getParameter("txtTel")));
 		
 		//Adicionando na lista
-		lista.add(cli);
+		//lista.add(cli);
+		//Agora vamos enviar o Objeto para a classe BO
+		ClienteBO cb = new ClienteBO();
+		
+		
 		
 		//Adicionando a lista em um atributo no request.
 		request.setAttribute("listaCliente", lista);
