@@ -1,6 +1,5 @@
 package br.com.fiap.bo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.bean.Cliente;
@@ -11,11 +10,8 @@ public class ClienteBO {
 	private ClienteDAO cd = null;
 	
 	public List<Cliente> listarClientes() {
-		
 		cd = new ClienteDAO();
-		cd.select();
-		List<Cliente> listagem = new ArrayList<Cliente>();
-		return listagem;
+		return cd.select();
 	}
 
 	public boolean gravarCliente(Cliente cli) {
