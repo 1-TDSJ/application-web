@@ -50,7 +50,7 @@ public class ExemploController extends HttpServlet {
 			cli.setDataNasc(c.getTime());
 			// Realizando a formatação da Data de Nascimento
 			cli.setGenero('m');
-			cli.setTelefone(1178985623);
+			cli.setTelefone("1178985623");
 			// Por fim adicionando na lista
 			lista.add(cli);
 
@@ -69,7 +69,7 @@ public class ExemploController extends HttpServlet {
 			cli.setDataNasc(c.getTime());
 			// Realizando a formatação da Data de Nascimento
 			cli.setGenero('m');
-			cli.setTelefone(1178985623);
+			cli.setTelefone("1178985623");
 			// Por fim adicionando na lista
 			lista.add(cli);
 
@@ -88,7 +88,7 @@ public class ExemploController extends HttpServlet {
 			cli.setDataNasc(c.getTime());
 			// Realizando a formatação da Data de Nascimento
 			cli.setGenero('m');
-			cli.setTelefone(1178985623);
+			cli.setTelefone("1178985623");
 			// Por fim adicionando na lista
 			lista.add(cli);
 
@@ -119,7 +119,7 @@ public class ExemploController extends HttpServlet {
 				cli.setDataNasc(c.getTime());
 				// ************************FORMATANDO A DATA*************
 				cli.setGenero(request.getParameter("txtGen").charAt(0));
-				cli.setTelefone(Long.parseLong(request.getParameter("txtTel")));
+				cli.setTelefone(request.getParameter("txtTel"));
 
 				// Adicionando na lista
 				// lista.add(cli);

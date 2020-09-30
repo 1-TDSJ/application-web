@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ page import="java.util.List"%>
-<%@ page import="br.com.fiap.bean.Cliente"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
 
 
 <!DOCTYPE html>
@@ -16,57 +16,46 @@
 </head>
 <body>
 
-	<header> 
+	<header>
 		<nav></nav>
 	</header>
 	<div></div>
 	<section>
-	
-	<!-- Agora vamos trabalhar com Scriptlets, que é parecido com a EXPRESSION
-		porém ele não possui o sinal de =
-	-->
-	<% 
-		//Scriptlets
-		//E você pode criar código JAVA nesta área.
-		String nome = "Alexandre";
-	%>
-	
-	
-		<table border="1">
+
+		<table class="table table-hover">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
 				<th>Dt Nasc</th>
 				<th>Genêro</th>
 				<th>Tel</th>
-				<th>Editar</th>
+				<th colspan="3">Editar</th>
 			</tr>
-		
-		<%
-			List<Cliente> listagem = (List<Cliente>)request.getAttribute("listaCliente");
-			int count = 1;
-			for(Cliente cli : listagem){
-				out.println("<tr>");
-				out.println("<td>"+ count +"</td>");
-				out.println("<td>"+ cli.getNome() + " " + cli.getSobrenonme()+"</td>");
-				out.println("<td>"+ cli.getDataNasc() +"</td>");
-				
-				if(cli.getGenero() == 'm'){
-					out.println("<td>Masculino</td>");
-				}else if(cli.getGenero() == 'f'){
-					out.println("<td>Feminino</td>");
-				}else if(cli.getGenero() == 'o'){
-					out.println("<td>Outros</td>");
-				}
-				
-				out.println("<td>"+ cli.getTelefone() +"</td>");
-				out.println("<td><a href=editar?id-cli="+ count +">Editar</a></td>");
-				out.println("</tr>");
-				count++;
-			}
-		%>			
+
+			<c:forEach var="cli" items="${listaCli}" varStatus="id">
+				<tr>
+					<td>${id.count}</td>
+					<td>${cli.nome} ${cli.sobrenonme}</td>
+					<td><f:formatDate value="${cli.dataNasc}" pattern="dd/MM/yyyy"/> </td>
+					<c:choose>
+						<c:when test="${cli.genero eq 'm'.charAt(0)}">
+							<td>Masculino</td>
+						</c:when>
+						<c:when test="${cli.genero eq 'f'.charAt(0)}">
+							<td>Feminino</td>
+						</c:when>
+						<c:otherwise>
+							<td>Outros</td>
+						</c:otherwise>
+					</c:choose>
+					<td>${cli.telefone}</td>
+					<td><a href="update?id-cli=${cli.idCli}">Atualizar</a></td>
+					<td><a href="excluir?id-cli=${cli.idCli}">Excluir</a></td>
+				</tr>
+			</c:forEach>
+
 		</table>
-	
+
 	</section>
 	<footer></footer>
 

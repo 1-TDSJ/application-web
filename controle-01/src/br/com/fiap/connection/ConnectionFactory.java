@@ -15,7 +15,7 @@ public class ConnectionFactory {
 		
 		String dbURL = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl";
 		String user  = "pf0670";
-		String pwd   = "1239900";
+		String pwd   = "12335423";
 		
 		Class.forName("oracle.jdbc.OracleDriver");
 		return DriverManager.getConnection(dbURL,user,pwd);
@@ -74,7 +74,7 @@ public class ConnectionFactory {
 		ps.setString(2, cli.getSobrenonme());
 		ps.setDate(3, (java.sql.Date)cli.getDataNasc());
 		ps.setString(4, "m");
-		ps.setLong(5, cli.getTelefone());
+		ps.setString(5, cli.getTelefone());
 		ps.executeUpdate(); 
 
 //		while (rs.next()) {

@@ -1,5 +1,7 @@
 package br.com.fiap.bean;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cliente {
@@ -11,13 +13,13 @@ public class Cliente {
 	private String sobrenonme;
 	private Date dataNasc;
 	private char genero;
-	private long telefone;
+	private String telefone;
 	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cliente(int idCli, String nome, String sobrenonme, Date dataNasc, char genero, long telefone) {
+	public Cliente(int idCli, String nome, String sobrenonme, Date dataNasc, char genero, String telefone) {
 		super();
 		this.idCli = idCli;
 		this.nome = nome;
@@ -59,6 +61,11 @@ public class Cliente {
 		this.dataNasc = dataNasc;
 	}
 
+	public void setDataNasc(String dataNasc) throws ParseException {
+		this.dataNasc = new SimpleDateFormat("yyyy-MM-dd").parse(dataNasc);
+	}
+
+
 	public char getGenero() {
 		return genero;
 	}
@@ -67,11 +74,11 @@ public class Cliente {
 		this.genero = genero;
 	}
 
-	public long getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(long telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -79,4 +86,4 @@ public class Cliente {
 		return serialVersionUID;
 	}
 	
-	}
+}
