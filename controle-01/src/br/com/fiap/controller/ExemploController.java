@@ -20,15 +20,15 @@ import br.com.fiap.bo.ClienteBO;
 /**
  * Servlet implementation class ClienteController
  */
-@WebServlet(description = "Controle de requests e parametrização.", urlPatterns = { "/cliente", "/listar" })
-public class ClienteController extends HttpServlet {
+@WebServlet(description = "Controle de requests e parametrização.", urlPatterns = { "/exemploController" })
+public class ExemploController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List<Cliente> lista = null;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ClienteController() {
+	public ExemploController() {
 		super();
 
 		// Verificando se a lista está vazia

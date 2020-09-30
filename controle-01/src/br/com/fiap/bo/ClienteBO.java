@@ -21,7 +21,15 @@ public class ClienteBO {
 	
 	public boolean gravarCliente(Cliente cli) {
 		cd = new ClienteDAO();
-		return cd.insert(cli);
+		
+		//RN-01 = Verificar nome cliente.
+		if(verificaNome(cli.getNome())) {
+			return cd.insert(cli);
+		}else {
+			return false;
+		}
+		
+		
 	}
 
 	public boolean atualizarCliente(Cliente cli) {
@@ -34,4 +42,10 @@ public class ClienteBO {
 		return cd.delete(idCli);
 	}
 
+	public boolean verificaNome(String nome) {
+		System.out.println("Esse é o nome que foi passado : " + nome);
+		return true;
+	}
+	
+	
 }
