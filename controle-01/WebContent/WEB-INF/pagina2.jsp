@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PAGINA-1</title>
+<%@ include file="snnipet/libs/imports-head.jsp" %>
+<title>PAGINA-2</title>
 </head>
 <body>
-	<h1>Página-3</h1>
+	<%@ include file="snnipet/menu/menu-header.html" %>
+	<h1>Página-2</h1>
+	
 </body>
 </html>

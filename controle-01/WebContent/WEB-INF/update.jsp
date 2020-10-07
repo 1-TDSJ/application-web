@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
-
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="./css/bootstrap.css">
+<%@ include file="snnipet/libs/imports-head.jsp" %>
 <title>UPDATE-CLIENTE</title>
 </head>
 <body>

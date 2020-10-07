@@ -37,7 +37,7 @@ public class ClienteBO {
 		return cd.update(cli);
 	}
 	
-	public boolean excluirCliente(int idCli) {
+	public int apagarCliente(int idCli) {
 		cd = new ClienteDAO();
 		return cd.delete(idCli);
 	}

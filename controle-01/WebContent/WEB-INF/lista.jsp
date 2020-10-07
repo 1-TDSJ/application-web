@@ -9,9 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="./css/bootstrap.css">
-
+<%@ include file="snnipet/libs/imports-head.jsp" %>
 <title>LISTAGEM</title>
 </head>
 <body>

@@ -1,22 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="./css/bootstrap.css">
+<%@ include file="/WEB-INF/snnipet/libs/imports-head.jsp" %>
 <title>CADASTRO</title>
 </head>
 <body>
 
 <%@ include file="/WEB-INF/snnipet/menu/menu-header.html" %>
 	
-	<div>
-		<h2>${msgStatus}</h2> 		
-	</div>
+	<h2>${param.msgStatus}</h2> 		
 	
 	<section>
 		<form action="cliente" method="post">

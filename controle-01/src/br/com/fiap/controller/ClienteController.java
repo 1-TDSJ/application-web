@@ -17,7 +17,7 @@ import br.com.fiap.bo.ClienteBO;
 /**
  * Servlet implementation class ClienteController
  */
-@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update", "/pagina", "/cli-update"})
+@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update", "/pagina", "/cli-update", "/excluir"})
 
 public class ClienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,6 +55,10 @@ public class ClienteController extends HttpServlet {
 		case  "/controle-01/cli-update":
 			atualizarCliente(req, res);
 			break;
+
+		case  "/controle-01/excluir":
+			excluirCliente(req, res);
+			break;
 			
 		default:
 			res.sendRedirect("erro404.jsp");
@@ -62,6 +66,27 @@ public class ClienteController extends HttpServlet {
 		}
 	}
 	
+	//APAGAR CLIENTE
+	public void excluirCliente(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Instanciar a classe BO
+		ClienteBO cb = new ClienteBO();
+		
+		//Recuperar o status da operação passando o parâmetro necessário
+		// para a exclusão do Cliente. No caso o ID.
+		int status = cb.apagarCliente(Integer.parseInt(req.getParameter("id-cli")));
+		
+		//Verificando o status da operação
+		if(status > 0) {
+			//Criar uma mensagem de SUCESSO em um parâmetro para o usuário
+			res.sendRedirect("index.jsp?msgStatus=Registro EXCLUIDO com Sucesso!");
+		}else {
+			//Criar uma mensagem de ERRO em um parâmetro para o usuário
+			res.sendRedirect("index.jsp?msgStatus=Ocorreu um erro ao tentar EXCLUIR o Registro!");
+		}
+		
+	}
+
 	//CONTROLE DE PÁGINAS
 	public void controlePaginacao(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
@@ -90,14 +115,27 @@ public class ClienteController extends HttpServlet {
 		
 		if(status) {
 			//Criando uma mensagem de SUCESSO.
-			req.setAttribute("msgStatus", "Os dados foram gravados com sucesso!");
+			//req.setAttribute("msgStatus", "Os dados foram gravados com sucesso!");
+			
+			//Criando a mensagem de sucesso para a página index.jsp em um parâmetro.
+			// Vai ser enviada através do contexto PARAM, isso quer dizer que será REDIRECIONADA
+			//Para ser recuperada na página JSP precisa ser utilizada a palavra param.
+			//Ex: param.nomeDoParametro
+			res.sendRedirect("index.jsp?msgStatus=Os dados foram gravados com sucesso!");
+			
 		}else {
 			//Criando uma mensagem de ERRO.
-			req.setAttribute("msgStatus", "Ocorreu um erro ao tentar gravar os dados.");
+			//req.setAttribute("msgStatus", "Ocorreu um erro ao tentar gravar os dados.");
+			
+			//Criando a mensagem de sucesso para a página index.jsp em um parâmetro.
+			// Vai ser enviada através do contexto PARAM, isso quer dizer que será REDIRECIONADA
+			//Para ser recuperada na página JSP precisa ser utilizada a palavra param.
+			//Ex: param.nomeDoParametro
+			res.sendRedirect("index.jsp?msgStatus=Ocorreu um erro ao tentar gravar os dados.");
 		}
 		
 		//Encaminhamento
-		req.getRequestDispatcher("index.jsp").forward(req, res);
+		//req.getRequestDispatcher("index.jsp").forward(req, res);
 	}
 	
 	//LISTANDO CLIENTE

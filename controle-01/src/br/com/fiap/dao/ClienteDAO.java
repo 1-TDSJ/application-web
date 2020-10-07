@@ -222,9 +222,37 @@ public class ClienteDAO {
 			return status;
 	}
 
-	public boolean delete(int idCli) {
-
-		return true;
+	public int delete(int idCli) {
+		
+		String sql = null;
+		PreparedStatement ps = null;
+		int status = 0;
+		
+		try {
+			
+			//Criando a instrução SQL
+			sql = "DELETE FROM TBL_CLIENTE WHERE ID_CLI = ?";
+			
+			//Criando a conexão
+			ps = con.prepareStatement(sql);
+			
+			//Popular a instrução SQL
+			ps.setInt(1, idCli);
+			
+			//Capturando o status da operação
+			status = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			try {
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return status;
 	}
 
 }
