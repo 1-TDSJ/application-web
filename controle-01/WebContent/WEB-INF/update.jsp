@@ -15,17 +15,11 @@
 </head>
 <body>
 
-	<header>
-		<nav>
-			<ul class="nav justify-content-center">
-				<li class="nav-link active"><a href="index.jsp">Início</a></li>
-				<li class="nav-link"><a href="listagem">Lista de Clientes</a></li>
-			</ul>
-		</nav>
-	</header>
+<%@ include file="snnipet/menu/menu-header.html" %>
 	
 	<section>
-		<form action="cliente" method="post">
+		<form action="cli-update" method="post">
+			<input type="hidden" name="txtIdCli" value="${cliUpdate.idCli}">
 			<fieldset>
 				<legend>Atualizar Dados</legend>
 				<div class="form-group">

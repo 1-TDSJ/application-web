@@ -16,10 +16,8 @@
 </head>
 <body>
 
-	<header>
-		<nav></nav>
-	</header>
-	<div></div>
+	<%@ include file="snnipet/menu/menu-header.html" %>
+	
 	<section>
 
 		<table class="table table-hover">

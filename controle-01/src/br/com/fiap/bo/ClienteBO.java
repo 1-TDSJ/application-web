@@ -32,7 +32,7 @@ public class ClienteBO {
 		
 	}
 
-	public boolean atualizarCliente(Cliente cli) {
+	public int atualizarCliente(Cliente cli) {
 		cd = new ClienteDAO();
 		return cd.update(cli);
 	}

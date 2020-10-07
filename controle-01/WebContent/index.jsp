@@ -12,17 +12,7 @@
 </head>
 <body>
 
-	<header>
-		<nav>
-			<ul class="nav justify-content-center">
-				<li class="nav-link active"><a href="index.jsp">Início</a></li>
-				<li class="nav-link"><a href="listagem">Lista de Clientes</a></li>
-				<li class="nav-link"><a href="pagina?uri=pagina1.jsp">Página-1</a></li>
-				<li class="nav-link"><a href="pagina?uri=pagina2.jsp">Página-2</a></li>
-				<li class="nav-link"><a href="pagina3.jsp">Página-3</a></li>
-			</ul>
-		</nav>
-	</header>
+<%@ include file="/WEB-INF/snnipet/menu/menu-header.html" %>
 	
 	<div>
 		<h2>${msgStatus}</h2> 		

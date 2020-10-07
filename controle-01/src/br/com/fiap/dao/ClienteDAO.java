@@ -182,9 +182,44 @@ public class ClienteDAO {
 		return status;
 	}
 
-	public boolean update(Cliente cli) {
-
-		return true;
+	public int update(Cliente cli) {
+		
+		String sql = null;
+		PreparedStatement ps = null;
+		int status = 0;
+		
+		System.out.println("IDC CLIENTE : " + cli.getIdCli());
+		
+		try {
+		//CRIANDO A INSTRUÇÃO SQL
+		sql = "UPDATE TBL_CLIENTE SET NOME_CLI = ?,SOBRENOME_CLI = ?,DATA_NASC_CLI = TO_DATE(?,'yyyy-MM-dd'),"
+				+ "GENERO_CLI = ?,TEL_CLI = ? WHERE ID_CLI = ?";
+		
+		//Criando a conexão
+		ps = con.prepareStatement(sql);
+		 
+		//POPULANDO A CONEXÃO COM O OBJETO
+		ps.setString(1, cli.getNome());
+		ps.setString(2, cli.getSobrenonme());
+		ps.setString(3, new SimpleDateFormat("yyyy-MM-dd").format(cli.getDataNasc()));
+		ps.setString(4, String.valueOf(cli.getGenero()));
+		ps.setString(5, cli.getTelefone());
+		ps.setInt(6, cli.getIdCli());
+		
+		//Gerando o retorno para avaliação
+		status = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}finally {
+			try {
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			return status;
 	}
 
 	public boolean delete(int idCli) {

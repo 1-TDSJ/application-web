@@ -17,7 +17,7 @@ import br.com.fiap.bo.ClienteBO;
 /**
  * Servlet implementation class ClienteController
  */
-@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update", "/pagina"})
+@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update", "/pagina", "/cli-update"})
 
 public class ClienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,6 +52,10 @@ public class ClienteController extends HttpServlet {
 			controlePaginacao(req, res);
 			break;
 
+		case  "/controle-01/cli-update":
+			atualizarCliente(req, res);
+			break;
+			
 		default:
 			res.sendRedirect("erro404.jsp");
 			break;
@@ -111,7 +115,7 @@ public class ClienteController extends HttpServlet {
 			req.setAttribute("listaCli", lista);
 			
 			//Encaminhamento para a página lista.jsp em caso de sucesso.
-			req.getRequestDispatcher("lista.jsp").forward(req, res);
+			req.getRequestDispatcher("/WEB-INF/lista.jsp").forward(req, res);
 		}else {
 			//Cria um atributo no request com uma mensagem para o usuário.
 			req.setAttribute("msgStatus", "Ocorreu um erro com a listagem.");
@@ -151,7 +155,33 @@ public class ClienteController extends HttpServlet {
 	//ATUALIZANDO CLIENTE
 	public void atualizarCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
+		//Recuperação dos dados do index.jsp
+		Cliente cli = new Cliente();
+		cli.setIdCli(Integer.parseInt((req.getParameter("txtIdCli"))));
+		cli.setNome(req.getParameter("txtNm"));
+		cli.setSobrenonme(req.getParameter("txtSnm"));
+		try {
+			cli.setDataNasc(new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("txtDtNasc")));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		cli.setGenero(req.getParameter("txtGen").charAt(0));
+		cli.setTelefone(req.getParameter("txtTel"));
 		
+		//Instanciando a classe BO
+		ClienteBO cb = new ClienteBO();
+		int status = cb.atualizarCliente(cli);
+		
+		if(status > 0) {
+			//Criando uma mensagem de SUCESSO.
+			req.setAttribute("msgStatus", "Os dados foram ATUALIZADOS com sucesso!");
+		}else {
+			//Criando uma mensagem de ERRO.
+			req.setAttribute("msgStatus", "Ocorreu um erro ao tentar ATUALIZAR os dados.");
+		}
+		
+		//Encaminhamento
+		req.getRequestDispatcher("index.jsp").forward(req, res);
 		
 	}
 	
