@@ -17,7 +17,7 @@ import br.com.fiap.bo.ClienteBO;
 /**
  * Servlet implementation class ClienteController
  */
-@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update"})
+@WebServlet(urlPatterns = { "/cliente", "/listagem", "/update", "/pagina"})
 
 public class ClienteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,6 +47,10 @@ public class ClienteController extends HttpServlet {
 		case  "/controle-01/update":
 			listarClienteById(req, res);
 			break;
+		
+		case  "/controle-01/pagina":
+			controlePaginacao(req, res);
+			break;
 
 		default:
 			res.sendRedirect("erro404.jsp");
@@ -54,6 +58,13 @@ public class ClienteController extends HttpServlet {
 		}
 	}
 	
+	//CONTROLE DE PÁGINAS
+	public void controlePaginacao(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		req.getRequestDispatcher("/WEB-INF/"+req.getParameter("uri")).forward(req, res);
+		
+	}
+
 	//INSERINDO CLIENTE
 	public void inserirCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
@@ -126,7 +137,7 @@ public class ClienteController extends HttpServlet {
 			req.setAttribute("cliUpdate", cli);
 			
 			//Encaminhamento para a página lista.jsp em caso de sucesso.
-			req.getRequestDispatcher("update.jsp").forward(req, res);
+			req.getRequestDispatcher("/WEB-INF/update.jsp").forward(req, res);
 		}else {
 			//Cria um atributo no request com uma mensagem para o usuário.
 			req.setAttribute("msgStatus", "Ocorreu um erro com a seleçao desejada.");
@@ -139,6 +150,7 @@ public class ClienteController extends HttpServlet {
 	
 	//ATUALIZANDO CLIENTE
 	public void atualizarCliente(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
 		
 		
 	}

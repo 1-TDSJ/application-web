@@ -34,7 +34,7 @@
 						<input type="text" name="txtNm" id="idNm"
 							placeholder="Digite seu nome" required="required"
 							class="form-control" value="${cliUpdate.nome}">
-					</div>
+					</div> 
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="idSnm">Sobrenome</label>
