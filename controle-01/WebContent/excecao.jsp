@@ -5,14 +5,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="/WEB-INF/snnipet/libs/imports-head.jsp" %>
-<title>EXCEÇÃO</title>
+<title><f:message key="site.paginas.excecao.titulo"/></title>
 </head>
 <body>
+	
+			
+	
+		<h2><f:message key="site.paginas.excecao.h2"/></h2>
 
-		<h2>Ocorreu um erro enquanto você tentava realizar o processo.</h2>
-	<div>
-		<a href="index.jsp" target="_blank">Início</a>
-	</div>
 
 </body>
 </html>

@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>PÁGINA NÃO ENCONTRADA</title>
+<%@ include file="/WEB-INF/snnipet/libs/imports-head.jsp" %>
+<title><f:message key="site.paginas.erro404.titulo"/></title>
 </head>
 <body>
+
+	<%@ include file="./WEB-INF/snnipet/menu/menu-header.html" %>
 	
-	<h2>A página que você estava tentando acessar não existe.</h2>
-	<div>
-		<a href="index.jsp" target="_blank">Início</a>
-	</div>
+	<h2><f:message key="site.paginas.erro404.h2"/></h2>
 	
 </body>
 </html>

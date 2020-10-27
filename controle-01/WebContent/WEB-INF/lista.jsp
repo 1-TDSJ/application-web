@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="snnipet/libs/imports-head.jsp" %>
-<title>LISTAGEM</title>
+<title><f:message key="site.paginas.lista.titulo"/></title>
 </head>
 <body>
 
@@ -20,12 +16,12 @@
 
 		<table class="table table-hover">
 			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Dt Nasc</th>
-				<th>Genêro</th>
-				<th>Tel</th>
-				<th colspan="3">Editar</th>
+				<th><f:message key="site.paginas.lista.tabela.th.id"/></th>
+				<th><f:message key="site.paginas.lista.tabela.th.nome"/></th>
+				<th><f:message key="site.paginas.lista.tabela.th.dt_nasc"/></th>
+				<th><f:message key="site.paginas.lista.tabela.th.genero"/></th>
+				<th><f:message key="site.paginas.lista.tabela.th.telefone"/></th>
+				<th colspan="3"><f:message key="site.paginas.lista.tabela.th.editar"/></th>
 			</tr>
 
 			<c:forEach var="cli" items="${listaCli}" varStatus="id">

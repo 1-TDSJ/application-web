@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <%@ include file="snnipet/libs/imports-head.jsp" %>
-<title>UPDATE-CLIENTE</title>
+<title><f:message key="site.paginas.update.titulo"/></title>
 </head>
 <body>
 
@@ -17,52 +17,51 @@
 		<form action="cli-update" method="post">
 			<input type="hidden" name="txtIdCli" value="${cliUpdate.idCli}">
 			<fieldset>
-				<legend>Atualizar Dados</legend>
+				<legend><f:message key="site.paginas.update.titulo"/></legend>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idNm">Nome</label>
+					<label class="control-label col-sm-2" for="idNm"><f:message key="site.paginas.update.form.campo.nome"/></label>
 					<div class="col-sm-10">
 						<input type="text" name="txtNm" id="idNm"
-							placeholder="Digite seu nome" required="required"
+							placeholder='<f:message key="site.paginas.update.form.campo.placeholder.nome"/>' required="required"
 							class="form-control" value="${cliUpdate.nome}">
 					</div> 
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idSnm">Sobrenome</label>
+					<label class="control-label col-sm-2" for="idSnm"><f:message key="site.paginas.update.form.campo.sobrenome"/></label>
 					<div class="col-sm-10">
 						<input type="text" name="txtSnm" id="idSnm"
-							placeholder="Digite seu sobrenome" required="required"
+							placeholder='<f:message key="site.paginas.update.form.campo.placeholder.sobrenome"/>' required="required"
 							class="form-control" value="${cliUpdate.sobrenonme}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idDtNasc">Data
-						de Nascimento</label>
+					<label class="control-label col-sm-2" for="idDtNasc"><f:message key="site.paginas.update.form.campo.dt_nasc"/></label>
 					<div class="col-sm-10">
 						<input type="date" name="txtDtNasc" id="idDtNasc"
 							required="required" class="form-control" value='<f:formatDate value="${cliUpdate.dataNasc}" pattern="yyyy-MM-dd"/>' pattern="dd/mm/yyyy" >
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idGen">Gênero</label>
+					<label class="control-label col-sm-2" for="idGen"><f:message key="site.paginas.update.form.campo.genero"/></label>
 					<div class="col-sm-10">
 						<select name="txtGen" id="idGen" required="required"
 							class="form-control">
-							<option value="0" selected="selected">Selecione uma	Opção</option>
+							<option value="0" selected="selected"><f:message key="site.paginas.update.form.select.option.sel"/></option>
 					<c:choose>
 						<c:when test="${cliUpdate.genero eq 'm'.charAt(0)}">
-							<option value="m" selected="selected">Masculino</option>
-							<option value="f">Feminino</option>
-							<option value="o">Outros</option>
+							<option value="m" selected="selected"><f:message key="site.paginas.update.form.select.option.m"/></option>
+							<option value="f"><f:message key="site.paginas.update.form.select.option.f"/></option>
+							<option value="o"><f:message key="site.paginas.update.form.select.option.o"/></option>
 						</c:when>
 						<c:when test="${cliUpdate.genero eq 'f'.charAt(0)}">
-							<option value="m">Masculino</option>
-							<option value="f" selected="selected">Feminino</option>
-							<option value="o">Outros</option>
+							<option value="m"><f:message key="site.paginas.update.form.select.option.m"/></option>
+							<option value="f" selected="selected"><f:message key="site.paginas.update.form.select.option.f"/></option>
+							<option value="o"><f:message key="site.paginas.update.form.select.option.o"/></option>
 						</c:when>		
 						<c:otherwise>
-							<option value="m">Masculino</option>
-							<option value="f">Feminino</option>
-							<option value="o" selected="selected">Outros</option>
+							<option value="m"><f:message key="site.paginas.update.form.select.option.m"/></option>
+							<option value="f"><f:message key="site.paginas.update.form.select.option.f"/></option>
+							<option value="o" selected="selected"><f:message key="site.paginas.update.form.select.option.o"/></option>
 						</c:otherwise>
 					</c:choose>
 							
@@ -70,16 +69,16 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="idTel">Telefone</label>
+					<label class="control-label col-sm-2" for="idTel"><f:message key="site.paginas.update.form.campo.telefone"/></label>
 					<div class="col-sm-10">
 						<input type="tel" name="txtTel" id="idTel"
-							placeholder="Digite seu telefone" required="required"
+							placeholder='<f:message key="site.paginas.update.form.campo.placeholder.telefone"/>' required="required"
 							class="form-control" value="${cliUpdate.telefone}">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-info btn-lg">ATUALIZAR</button>
+						<button type="submit" class="btn btn-info btn-lg"><f:message key="site.paginas.update.form.botao.atualizar"/></button>
 					</div>
 				</div>
 			</fieldset>

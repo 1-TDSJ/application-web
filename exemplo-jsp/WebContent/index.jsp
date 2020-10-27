@@ -24,6 +24,13 @@
 		</nav>
 	</header>
 	
+	<div style="color:red">
+		DIV
+		<p>Linha - 1</p>
+		<p>Linha - 2</p>
+	</div>
+	
+	
 	<%@ include file="rodape.jsp" %>
 </body>
 </html>
